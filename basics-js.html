@@ -1,0 +1,196 @@
+
+
+
+<!DOCTYPE html>
+<html> 
+	<head>
+		<title>JavaScript basic animation</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+		<script type="text/javascript"></script>
+	</head>
+	<body>
+		<div class="container">
+			<h3>Javascript basics exercises</h3><br>
+			<h4>1. Write a JavaScript program to display the current day and time.</h4>
+			<p>Today is <span id="day"></span></p>
+			<p><span id="time"></span></p>
+			<br>
+
+			<h4>2. Write a JavaScript program to print the contents of the current window.</h4>
+			<button onclick="printCurrentPage()">Click here to print current page</button>
+			<br><br>
+
+			<h4>3. Write a JavaScript program to get the current date. Expected Output : dd/mm/yyyy</h4>
+			<p>Current date is <span id="date"></span></p><br>
+
+			<h4>4. Write a JavaScript program to find the area of a triangle where lengths of the three of its sides are given.</h4>
+			First side:
+			<input type="text" id="first"><br><br>
+			Second side:
+			<input type="text" id="second"><br><br>
+			Third side:
+			<input type="text" id="third"><br><br>
+			<button onclick="area()">Click here to count the square</button><br><br>
+			<p>The square of the triangle is <span id="square"></span></p><br>
+
+			<h4>5. Write a JavaScript program to rotate the string 'w3resource' in right direction by periodically removing one letter from the end of the string and attaching it to the front.</h4>
+
+			<pre id="target">Antidisestablishmentarianism</pre>
+			<button onclick="animate_string('target')">Animate string</button><br><br>
+
+			<h4>6. Write a JavaScript program where the program takes a random integer between 1 to 10, the user is then prompted to input a guess number. If the user input matches with guess number, the program will display a message "Good Work" otherwise display a message "Not matched"</h4>
+			What do you think is the number? Choose between 1 to 10.
+			<input type="text" id="guess" onkeydown="guessTheNumber()"><br><br>
+
+			<h4>7. Write a JavaScript program to calculate multiplication and division of two numbers (input from user).</h4><br>
+			First number:
+			<input type="text" id="firstNumber"><br><br>
+			Second number:
+			<input type="text" id="secondNumber"><br><br>
+			<button onclick="multiply()">Multiply</button>
+			<button onclick="divide()">Divide</button><br><br>
+			<p>Result is <span id="result"></span></p><br>
+
+			<h4>8. Write a JavaScript program to get the website URL (loading page)</h4>
+			<button onclick="showUrl()">Show website URL</button><br><br>
+
+
+			<h4>9. Write a JavaScript program to convert temperatures to and from celsius, fahrenheit.</h4>
+				
+			<form>
+				Температура °C: <br>
+				<input type="text" id="c" onkeyup="convertCels()">
+				<br>
+				= 
+				<br>
+				Температура °F: <br>
+				<input type="text" id="f" onkeyup="convertFar()">
+			</form><br>
+		</div>
+	</body>
+	<script>
+		// 1. Write a JavaScript program to display the current day and time.
+
+		var weekday = new Array(7) 
+
+		weekday[0]=  "Sunday";
+		weekday[1] = "Monday";
+		weekday[2] = "Tuesday";
+		weekday[3] = "Wednesday";
+		weekday[4] = "Thursday";
+		weekday[5] = "Friday";
+		weekday[6] = "Saturday";
+
+		setInterval(function () {
+			var today1 = new Date()
+			document.getElementById("day").innerHTML = weekday[today1.getDay()]
+			var currentTime = "Current time is " + today1.getHours() + " hours " + today1.getMinutes() + " minutes " + today1.getSeconds() + " seconds"
+			document.getElementById("time").innerHTML = currentTime
+
+		}, 1000);
+
+
+
+		// 2. Write a JavaScript program to print the contents of the current window.
+
+		function printCurrentPage(){
+			window.print()
+		}
+
+
+		// 3. Write a JavaScript program to get the current date. Expected Output : dd/mm/yyyy
+
+		var today = new Date()
+		var dd = today.getDate()
+		var mm = today.getMonth() + 1
+		var yyyy = today.getFullYear()
+		if (dd < 10) {dd = "0" + dd;}
+		if (mm < 10) {mm = "0" + mm};
+		today = dd + "/" + mm + "/" + yyyy
+		document.getElementById("date").innerHTML = today
+
+
+		// 4. Write a JavaScript program to find the area of a triangle where lengths of the three of its sides are 5, 6, 7.
+
+		function area(){
+			var a = parseInt(document.getElementById("first").value);
+			var b = parseInt(document.getElementById("second").value);
+			var c = +document.getElementById("third").value;
+			var p = (a+b+c)/2
+			var s = Math.sqrt(p*((p-a)*(p-b)*(p-c)))
+			document.getElementById("square").innerHTML = s
+		}
+
+
+		// 5. Write a JavaScript program to rotate the string 'w3resource' in right direction by periodically removing one letter from the end of the string and attaching it to the front. 
+
+
+		function animate_string(id) {
+			var element = document.getElementById(id);
+			var textNode = element.childNodes[0]; // assuming no other children
+			var text = textNode.data;
+
+			setInterval(function () {
+				text = text[text.length - 1] + text.substring(0, text.length - 1);
+					textNode.data = text;
+			}, 3000);
+		}
+
+
+		// 6. Write a JavaScript program where the program takes a random integer between 1 to 10, the user is then prompted to input a guess number. If the user input matches with guess number, the program will display a message "Good Work" otherwise display a message "Not matched"
+
+		function guessTheNumber(){
+			var correctNumber = Math.floor((Math.random() * 10) + 1);
+			var guessNumber = document.getElementById("guess").value;
+			correctNumber === guessNumber ? alert("Good work!") : alert("Not matched, the number was " + correctNumber)
+		}
+
+
+
+		// 7. Write a JavaScript program to calculate multiplication and division of two numbers (input from user).
+
+					
+		function multiply(){  
+			var num1 = document.getElementById("firstNumber").value;
+			var num2 = document.getElementById("secondNumber").value;
+			document.getElementById("result").innerHTML = num1 * num2; 
+		}
+
+		function divide(){
+			var num1 = document.getElementById("firstNumber").value;
+			var num2 = document.getElementById("secondNumber").value;
+			document.getElementById("result").innerHTML = num1 / num2; 
+		}
+
+
+
+		// 8. Write a JavaScript program to get the website URL (loading page)  
+		function showUrl(){
+			alert(document.URL); 
+		}
+
+		// 9. Write a JavaScript program to convert temperatures to and from celsius, fahrenheit.
+
+
+		function convertCels(){
+			var tempC = document.getElementById("c").value;
+			
+			if (tempC === "") {newTempF = "";}
+			else {var newTempF = tempC * 9 / 5 + 32;}
+			document.getElementById("f").value = newTempF;  
+		}
+		function convertFar(){
+
+			var tempF = document.getElementById("f").value;
+		 
+			if (tempF === "") {newTempC = "";} 
+			else {var newTempC = (tempF - 32)*5/9;}
+
+			document.getElementById("c").value = newTempC; 
+			
+		}
+
+	</script>
+</html>
