@@ -1,0 +1,263 @@
+
+
+<!DOCTYPE html>
+<html> 
+	<head>
+		<title>JavaScript: functions</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+		<script type="text/javascript"></script>
+	</head>
+	<body>
+		<div class="container">
+			<h3>JavaScript functions</h3><br>
+			<h4>1. Write a JavaScript function that reverse a number.</h4>
+			Write down the number: <br><br>
+			<input type="text" id="number"><br><br>
+			<button onclick="reverse()">Click to see the reversed number</button><br><br>
+			Reversed number is <span id="reverseNumber"></span>
+
+			<h4>2.Write a JavaScript function that checks whether a passed string is palindrome or not?</h4>
+			Write down the word: <br><br>
+			<input type="text" id="word1"><br><br>
+			<button onclick="checkPal()">Click to see if the word is a palindrom</button><br><br>
+
+			<h4>3.Write a JavaScript function that returns a passed string with letters in alphabetical order.</h4>
+			<input type="text" id="wordNotAnphab"><br><br>
+			<button onclick="alphabet()">Click to see the result</button><br><br>
+			Your word in alphabetical order is <span id="alphaWord"></span><br><br>
+
+			<h4>4. Write a JavaScript function that accepts a string as a parameter and converts the first letter of each word of the string in upper case.</h4>
+			 Write down the word: <br><br>
+			<input type="text" id="phrase"><br><br>
+			<button onclick="bigStart()">Click to see a new phrase</button><br><br>
+			New phrase is <span id="bigPhrase"></span><br><br>
+
+			<h4>5. Write a JavaScript function that accepts a string as a parameter and find the longest word within the string</h4>
+			Write the phrase:<br>
+			<input type="text" id="phraseInit">
+			<button onclick="chooseLong()">Click to see result</button><br><br>
+			The biggest word within a phrase is <span id="longWord"></span><br><br>
+			
+			<h4>6. Write a JavaScript function that accepts a string as a parameter and counts the number of vowels within the string</h4>
+			Write the phrase or word:<br>
+			<input type="text" id="s"><br><br>
+			<button onclick="vowe()">Click to see result</button><br><br>
+
+			<h4>7.Write a JavaScript function which says whether a number is perfect. Go to the editor
+				According to Wikipedia : In number theory, a perfect number is a positive integer that is equal to the sum of its proper positive divisors, that is, the sum of its positive divisors excluding the number itself (also known as its aliquot sum). Equivalently, a perfect number is a number that is half the sum of all of its positive divisors (including itself).<br>
+				Example : The first perfect number is 6, because 1, 2, and 3 are its proper positive divisors, and 1 + 2 + 3 = 6. Equivalently, the number 6 is equal to half the sum of all its positive divisors: ( 1 + 2 + 3 + 6 ) / 2 = 6. The next perfect number is 28 = 1 + 2 + 4 + 7 + 14. This is followed by the perfect numbers 496 and 8128.
+			</h4>
+			<input type="text" id="perfectNumber"><br><br>
+			<button onclick="isPerfect()">Click to see the result</button><br><br>
+
+			<h4>8.Write a JavaScript function to compute the factors of a positive integer.</h4>
+			<input type="text" id="integer"><br><br>
+			<button onclick="factorsSum()">Click to see the result</button><br><br>
+			The divisors of its number are <span id="factors_all"></span>
+
+			<h4>9. Write a JavaScript function to extract unique characters from a string. Go to the editor
+				Example string : "thequickbrownfoxjumpsoverthelazydog"
+				Expected Output : "thequickbrownfxjmpsvlazydg"
+			</h4>
+			<input type="text" id="givenStr"><br><br>
+			<button onclick="findUniq()">Click to see the result</button><br><br>
+			The unique characters from a string are <span id="unique"></span>
+
+			<h4>10.Write a JavaScript function to get the number of occurrences of each letter in specified string.</h4>
+			
+			<input type="text" id="string1"><br><br>
+			<button onclick="Char_Counts()">Click to see the result</button><br><br>
+			The unique characters from a string are <span id="char_result"></span>
+
+			<h4>11. Write a JavaScript function that returns array elements larger than a number.</h4>
+			Write the numbers for the array: (like here "23 15 45 78 98")<br>
+			<input type="text" id="ourArray"><br><br>
+			Write the large number:<br>
+			<input type="text" id="large"><br><br>
+			<button onclick="largeNum()">Click to see the result</button><br><br>
+			The numbers that are biiger than your large number are/is <span id="result_numbers"></span>
+
+			<h4>12. Write a JavaScript function that generates a password of random characters of the certain symbol's numeber</h4>
+			How many characters should be?<br>
+			<input type="text" id="randomLength"><br><br>
+			<button onclick="randomString()">Click to see the result</button><br>
+			You random password is <span id="random"></span>
+
+			<h4>13. Write a JavaScript function that accepts two arguments, a string and a letter and the function will count the number of occurrences of the specified letter within the string.</h4>
+			Whats the letter?<br>
+			<input type="text" id="letter"><br>
+
+			Whats the string?<br>
+			<input type="text" id="str"><br><br>
+
+			<button onclick="countLetter()">Click to see the result</button><br><br>
+			The number of occurences is <span id="occur"></span>
+
+			<h4>14. Write a JavaScript function that accept a list of country names as input and returns the longest country name as output. Example: "Australia, Germany, United States of America". Expected output : "United States of America"</h4>
+			Write the countries<br>
+			<input type="text" id="country"><br><br>
+			<button onclick="longCountry()">Click to see the result</button><br><br>
+			The biggest country's name is <span id="longest"></span>
+
+
+
+
+
+		</div>
+	</body>
+	
+	<script>
+		// 1. Write a JavaScript function that reverse a number.
+		function reverse(){
+			var number1 = document.getElementById("number").value;
+			var reverseNumber = number1.split("").reverse().join("");
+			document.getElementById("reverseNumber").innerHTML = reverseNumber;
+		}
+		// 2. Write a JavaScript function that checks whether a passed string is palindrome or not?
+		function checkPal(){
+			var word1 = document.getElementById("word1").value;
+			var reverseWord = word1.split("").reverse().join("");
+			word1 === reverseWord ? alert("Yeap! The word is a palindrom!") : alert("No, this is not a palindrom! Palindorm is for example deleveled, reifier, alula.");
+		}
+		// 3. Write a JavaScript function that returns a passed string with letters in alphabetical order.
+		function alphabet(){
+			var string1 = document.getElementById("wordNotAnphab").value;
+			var alphaString = string1.split("").sort().join("");
+			document.getElementById("alphaWord").innerHTML = alphaString;
+		}
+		// 4. Write a JavaScript function that accepts a string as a parameter and converts the first letter of each word of the string in upper case. 
+
+		function bigStart(){
+			var phrase = document.getElementById("phrase").value;
+			var splitPhrase = phrase.split(" ");
+			var bigPhrase = [];
+			for (var i =0; i < splitPhrase.length; i++){
+				bigPhrase.push(splitPhrase[i][0].toUpperCase() + splitPhrase[i].slice(1));
+				}
+			bigPhrase = bigPhrase.join(" ");
+			document.getElementById("bigPhrase").innerHTML = bigPhrase;
+			
+		}
+		// 5. Write a JavaScript function that accepts a string as a parameter and find the longest word within the string
+		function chooseLong(){
+			var phraseInit = document.getElementById("phraseInit").value;
+			var sortedPhrase = phraseInit.split(" ");
+			var longWord = sortedPhrase[0];
+
+			for(var i=1; i < sortedPhrase.length; i++) {
+				if(longWord.length < sortedPhrase[i].length){
+					longWord = sortedPhrase[i];
+				}
+			}
+			document.getElementById("longWord").innerHTML = longWord;
+		}
+		// 6. Write a JavaScript function that accepts a string as a parameter and counts the number of vowels within the string
+		function vowe() {
+			var s = document.getElementById("s").value;
+			var matches = s.match(/[aeiou]/gi);
+			var count = matches ? matches.length : 0;
+			alert("The word contains " + count + " vowel(s)");
+		}
+// 		7. Write a JavaScript function which says whether a number is perfect. Go to the editor
+// According to Wikipedia : In number theory, a perfect number is a positive integer that is equal to the sum of its proper positive divisors, that is, the sum of its positive divisors excluding the number itself (also known as its aliquot sum). Equivalently, a perfect number is a number that is half the sum of all of its positive divisors (including itself).
+// Example : The first perfect number is 6, because 1, 2, and 3 are its proper positive divisors, and 1 + 2 + 3 = 6. Equivalently, the number 6 is equal to half the sum of all its positive divisors: ( 1 + 2 + 3 + 6 ) / 2 = 6. The next perfect number is 28 = 1 + 2 + 4 + 7 + 14. This is followed by the perfect numbers 496 and 8128.
+		function isPerfect(){
+			var temp = 0;
+			var potentialNum = parseInt(document.getElementById("perfectNumber").value);
+			for (var i =1; i <= potentialNum/2; i++) {
+				if (potentialNum%i === 0) {
+					temp += i
+				}
+			}
+			console.log(potentialNum, temp, temp===potentialNum);
+			if (temp === potentialNum) {
+				alert("Yee! That is a perfect number!")
+			} else {
+				alert("Sorry, This is not a perfect number!")
+			}
+		}
+	// 8. Write a JavaScript function to compute the factors of a positive integer. 
+		function factorsSum(){
+			var integ = parseInt(document.getElementById("integer").value);
+			var factors_sum = [];
+			for (var i=1; i <= integ; i++) {
+				if (integ%i === 0) {
+					factors_sum.push(i);
+				}
+			}
+			document.getElementById("factors_all").innerHTML = factors_sum;
+		}
+	// 9. Write a JavaScript function to extract unique characters from a string. Go to the editor
+// Example string : "thequickbrownfoxjumpsoverthelazydog"
+// Expected Output : "thequickbrownfxjmpsvlazydg"
+		function findUniq(){
+			var givenStr = document.getElementById("givenStr").value;
+			givenStr = givenStr.split("").sort();
+			console.log(givenStr);
+			for (var i=0; i <= givenStr.length; i++) {
+				if(givenStr[i] === givenStr[i+1]) {
+					delete givenStr[i];
+				}
+			}
+			givenStr = givenStr.join("");
+			document.getElementById("unique").innerHTML = givenStr;
+		}
+// 10.Write a JavaScript function to get the number of occurrences of each letter in specified string.</h4>
+			
+
+		function Char_Counts() {
+			var string1 = document.getElementById("string1").value;
+			var uchars = {};
+			string1.replace(/\S/g, function(l){uchars[l] = (isNaN(uchars[l]) ? 1 : uchars[l] + 1);});   
+			console.log(JSON.stringify(uchars));
+			document.getElementById("char_result").innerHTML = JSON.stringify(uchars);
+		}
+
+		// 11. Write a JavaScript function that returns array elements larger than a number.
+		function largeNum(){
+			var largeNumber = parseInt(document.getElementById("large").value);
+			var ourArray = document.getElementById("ourArray").value.split(" ");
+			var newArray = [];
+			for (var i=0; i<=ourArray.length; i++){
+				if(ourArray[i] < largeNumber){
+					newArray.push(ourArray[i]);
+				}
+			}
+			console.log(newArray);
+			document.getElementById("result_numbers").innerHTML = newArray;
+		}
+
+		// 12. Write a JavaScript function that generates a string id (specified length) of random characters
+		function randomString(){
+			var randomLength = parseInt(document.getElementById("randomLength").value);
+			var charList = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+			var random = "";
+			for (var i=0; i < randomLength; i++ ) {
+				random += charList.charAt(Math.floor(Math.random() * charList.length));
+			}
+			document.getElementById("random").innerHTML = random;
+		}
+// 		13. Write a JavaScript function that accepts two arguments, a string and a letter and the function will count the number of occurrences of the specified letter within the string.
+		function countLetter(){
+			var letter = document.getElementById("letter").value;
+			var str = document.getElementById("str").value;
+			var occur = 0;
+			for (var i=0; i<= str.length; i++){
+				if(str[i] === letter){
+					occur += 1;
+				}
+			}
+			document.getElementById("occur").innerHTML = occur;
+		}
+		// 14. Write a JavaScript function that accept a list of country names as input and returns the longest country name as output. Sample function : Longest_Country_Name(["Australia", "Germany", "United States of America"]). Expected output : "United States of America"
+		function longCountry(){
+			var countries = document.getElementById("country").value.split(", ");
+			var longest = countries.reduce(function findCountry(name1, countr){
+				return name1.length > countr.length ? name1 : countr;
+			}, "")
+			document.getElementById("longest").innerHTML = longest;
+		}
+	</script>
+</html>
