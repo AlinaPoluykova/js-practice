@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JS Canvas practice</title>
+	</head>
+	<body>
+		<h2>Javascript practice: Canvas</h2>
+		<h4>1.Write a JavaScript program to draw the following rectangular shape.</h4>
+		<button onclick="draw1()">Click to see the form</button>
+		<canvas id="canvas1" width="150" height="150"></canvas>
+
+		<h4>2.Write a JavaScript program to draw a red circle.</h4>
+		<button onclick="draw2()">Click to see the circle</button>
+		<canvas id="circle" width="150" height="150"></canvas>
+
+		<h4>3.Write a JavaScript program to draw two intersecting rectangles, one of which has alpha transparency</h4>
+		<button onclick="draw3()">Click to see 2 rectangles</button>
+		<canvas id="forms2" width="150" height="150"></canvas>
+
+		<h4>4.Write a JavaScript program to draw the following right-angled triangle.</h4>
+		<button onclick="draw4()">Click to see the triangle</button>
+		<canvas id="triangle" width="120" height="120"></canvas>
+
+		<h4>5.Write a JavaScript program to draw the following diagram [use moveto() function].</h4>
+		<button onclick="draw5()">Click to see the smile</button>
+		<canvas id="smile" width="150" height="150"></canvas>
+	</body>
+	<script type="text/javascript">
+	// 1. Write a JavaScript program to draw the following rectangular shape.
+	function draw1(){
+		var canvas1 = document.getElementById("canvas1");
+		if (canvas1.getContext) {
+			var ctxt = canvas1.getContext("2d");
+			ctxt.fillRect(20,20,100,100);
+			ctxt.clearRect(40,40,60,60);
+			ctxt.strokeRect(45,45,50,50);
+		}
+	}
+	// 2. Write a JavaScript program to draw a red circle.
+	function draw2(){
+		var circle = document.getElementById("circle");
+		if(circle.getContext){
+			var ctxt2 = circle.getContext("2d");
+			var X = circle.width/2;
+			var Y = circle.height/2;
+			var R = 40;
+			ctxt2.beginPath();
+			ctxt2.arc(X,Y,R,0, 2*Math.PI, false);
+			ctxt2.lineWidth = 3;
+			ctxt2.strokeStyle= '#FF0000';
+			ctxt2.stroke();
+		}
+	}
+	// 3. Write a JavaScript program to draw two intersecting rectangles, one of which has alpha transparency
+	function draw3(){
+		var rect2 = document.getElementById("forms2");
+		if(rect2.getContext){
+			var ctxt3 = rect2.getContext("2d");
+			ctxt3.fillStyle= "rgb(256,0,0)";
+			ctxt3.fillRect(10,10, 50,50);
+
+			ctxt3.fillStyle = "rgba(0, 0, 200, 0.6)";
+			ctxt3.fillRect(30,30, 50, 50);
+		}
+	}
+		// 4. Write a JavaScript program to draw the following right-angled triangle.
+	function draw4(){
+		var triangle = document.getElementById("triangle");
+		if(triangle.getContext){
+			var ctxt4 = triangle.getContext("2d");
+			ctxt4.beginPath();
+			ctxt4.moveTo(75,75);
+			ctxt4.lineTo(10,75);
+			ctxt4.lineTo(10,15);
+			ctxt4.fillStyle = "green";
+			ctxt4.fill();
+		}
+	}
+	// 5. Write a JavaScript program to draw the following diagram [use moveto() function].
+	function draw5(){
+		var smile = document.getElementById("smile");
+		if(smile.getContext){
+			var ctx5 = smile.getContext("2d");
+			ctx5.beginPath();
+			ctx5.arc(75,75,45,0, 2*Math.PI, false);
+			ctx5.lineWidth = 1;
+			ctx5.stroke();
+			ctx5.fillStyle = "yellow";
+			ctx5.fill();
+			ctx5.moveTo(105,75);
+			// Mouth
+			ctx5.arc(75,75, 30, 0, 1*Math.PI, false);
+			ctx5.stroke();
+			ctx5.moveTo(60, 60);
+			// Eyes
+			ctx5.arc(60,60, 5, 0, 2*Math.PI, false);
+			ctx5.moveTo(80,60);
+			ctx5.arc(80, 60, 5, 0, 2*Math.PI, false);
+			ctx5.stroke();
+
+		}
+	}
+	</script>
+</html>
