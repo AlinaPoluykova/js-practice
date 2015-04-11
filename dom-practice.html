@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+	<head>
+		<title>JavaScript DOM</title>
+		<meta charset=utf-8 />   
+	</head>
+	<body>
+		<h3>1. Here is a sample html file with a submit button. Now modify the style of the paragraph text through javascript code. Change color anf font-size of the text when button is clicked</h3>
+		<p id ='text'>JavaScript Exercises - w3resource</p>
+		<button id="jsstyle" onclick="js_style()">Style</button>
+		<h3>2.Write a JavaScript function to get the values of First and Last name of the following form.</h3>
+		<form id="form1" onsubmit="getFormvalue()">  
+			First name: <input type="text" name="fname" value="David"><br>  
+			Last name: <input type="text" name="lname" value="Beckham"><br>  
+			<input type="submit" value="Submit">  
+		</form>
+		<h3>3.Write a JavaScript program to set the background color of a paragraph</h3>
+		<div id="change_color">
+		<button onclick="change()">Change color</button>
+			<p>program to set the background <br>color program to set the background color program <br> to set the background color program to set the <br>background color program to set the background color</p>
+		</div>
+
+		<h3>4.Here is a sample html file with a submit button. Write a JavaScript function to get the value of the href, hreflang, rel, target, and type attributes of the specified link</h3>
+		<p>
+			<a id="w3r" type="text/html" hreflang="en-us" rel="nofollow" target="_self" href="http://www.w3resource.com/">w3resource</a>
+		</p>  
+		<button onclick="getAttributes()">Click here to get  attributes value</button>  
+		<h3>5.Write a JavaScript function to add rows to a table.</h3>
+		<table id="sampleTable" border="1">  
+		<tr><td>Row1 cell1</td>
+		<td>Row1 cell2</td></tr>
+		<tr><td>Row2 cell1</td>
+		<td>Row2 cell2</td></tr>
+		</table><br>  
+		<input type="button" onclick="insert_Row()" value="Insert row">  
+		<h3>6.Write a JavaScript function that accept row, column, (to identify a particular cell) and a string to update the content of that cell. </h3>
+		<form>
+		<table id="myTable" border="1">  
+		<tr><td>Row1 cell1</td>  
+		<td>Row1 cell2</td></tr>  
+		<tr><td>Row2 cell1</td>  
+		<td>Row2 cell2</td></tr>  
+		<tr><td>Row3 cell1</td>  
+		<td>Row3 cell2</td></tr>  
+		</table><form><br>
+		<input type="button" onclick="changeContent()" value="Change content">  
+		</form>
+		<h3>7.Write a JavaScript function that creates a table, accept row, column numbers from the user, and input row-column number as content (e.g. Row-0 Column-0) of a cell. </h3>
+			<table id="myTable2" border="1">  
+			</table>
+			<form>  
+				<input type="button" onclick="createTable()" value="Create the table">  
+			</form>
+		<h3>8. Write a JavaScript program to remove items from a dropdown list.</h3>
+		<form>  
+			<select id="colorSelect">  
+			<option>Red</option>  
+			<option>Green</option>  
+			<option>White</option>  
+			<option>Black</option>  
+			</select>  
+			<input type="button" onclick="removeColor()" value="Select and Remove"><br>
+		</form>
+
+	<h3>9.Write a JavaScript program to count and display the items of a dropdown list, in an alert window</h3>
+		<form>  
+	Select your favorite Color :  
+	<select id="mySelect">  
+	<option>Red</option>  
+	<option>Green</option>  
+	<option>Blue</option>  
+	<option>White</option>  
+	</select>  
+	<input type="button" onclick="getOptions()" value="Count and Output all items">  
+	</form>
+
+	<h3>10.Write a JavaScript program to calculate the volume of a sphere.</h3>
+	<p>Input radius value and get volume of the sphere</p>
+	Input radius value and get volume of the sphere <br>
+	Radius:
+	<input type="text" id="radius"><br>
+	Volume:
+	<input type="text" id="volume"><br>
+	<button onclick="calculate()">Calculate</button>
+
+	<h3>11.Write a JavaScript program to get the width and height of the window (any time the window is resized).</h3>
+	<button onclick="getSize()">get size</button>
+
+		</body>
+	<script type="text/javascript">
+	// 1. Here is a sample html file with a submit button. Now modify the style of the paragraph text through javascript code. Change color anf font-size of the text when button is clicked
+	function js_style(){
+		document.getElementById("text").style.fontSize = "22px"
+		document.getElementById("text").style.color = "green"
+	}
+	// 2. Write a JavaScript function to get the values of First and Last name of the following form.
+	function getFormvalue(){
+		var val = document.getElementById("form1");
+		for(var i=0; i < val.length; i++){
+			if(val.elements[i].value !='Submit'){
+				alert(val.elements[i].value)
+			}
+		}
+	}
+	// 3. Write a JavaScript program to set the background color of a paragraph.
+	function change(){
+		document.getElementById("change_color").style.background = "yellow";
+	}
+	// 4. Here is a sample html file with a submit button. Write a JavaScript function to get the value of the href, hreflang, rel, target, and type attributes of the specified link
+	function getAttributes(){
+		alert("type: " + document.getElementById("w3r").type)
+		alert("hreflang: " + document.getElementById("w3r").hreflang)
+		alert("rel: " + document.getElementById("w3r").rel)
+		alert("target: " + document.getElementById("w3r").target)
+		alert("href: " + document.getElementById("w3r").href)
+	}
+	// 5. Write a JavaScript function to add rows to a table.
+	function insert_Row(){
+		var row = document.getElementById("sampleTable").insertRow(0);
+		var cel1 = row.insertCell(0);
+		var cel2 = row.insertCell(1);
+		cel1.innerHTML = "Content for cell1"
+		cel2.innerHTML = "Content for cell2"
+	}
+	// 6. Write a JavaScript function that accept row, column, (to identify a particular cell) and a string to update the content of that cell. 
+	function changeContent(){
+		var r = window.prompt("Input the Row number(0,1,2)", "0")
+		var c = window.prompt("Input the Row number(0,1)", "0")
+		var st = window.prompt("Input the content of the cell")
+		var x = document.getElementById("myTable").rows[parseInt(r, 10)].cells
+		x[parseInt(c,10)].innerHTML = st;
+	}
+
+	// 7. Write a JavaScript function that creates a table, accept row, column numbers from the user, and input row-column number as content (e.g. Row-0 Column-0) of a cell. 
+		function createTable(){
+			var row = window.prompt("Input the number of rows", "1")
+			var column = window.prompt("Input the number of columns", "1")
+			for(var r = 0; r < parseInt(row); r++){
+				var x = document.getElementById("myTable2").insertRow(r)
+			
+				for (var c = 0; c < parseInt(column); c++){
+					var y = x.insertCell(c);
+					y.innerHTML = "row: "+ r + ", cell: " + c;
+				}
+			}
+			
+		}
+	// 8. Write a JavaScript program to remove items from a dropdown list.
+	function removeColor(){
+		var col = document.getElementById("colorSelect");
+		col.remove(col.selectedIndex);
+	}
+
+	// 9. Write a JavaScript program to count and display the items of a dropdown list, in an alert window
+	function getOptions(){
+		var count = document.getElementById("mySelect")
+		var length = count.length
+		for(var i = 0; i< count.length; i++){
+			alert("Item is " + count.options[i].text + ", length is " + length);
+		}
+	}
+
+	// 10. Write a JavaScript program to calculate the volume of a sphere.
+	function calculate(){
+		var radius = parseInt(document.getElementById("radius").value);
+		var volume = 3/4*Math.PI*radius*radius*radius
+		document.getElementById("volume").value = volume;
+	}
+
+	// 11.Write a JavaScript program to get the width and height of the window (any time the window is resized).
+	function getSize(){
+		var w = document.documentElement.clientWidth;
+		var h = document.documentElement.clientHeight;
+		alert("width is " + w + ", height is " + h)
+	}
+	// </script>
+</html>
+
