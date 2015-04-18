@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Slider</title>
+    <meta charset="utf-8">
+</head>
+<style>
+#main {
+    position:relative;
+    margin: 100px auto;
+    padding: 5px;
+    width: 660px;
+    height:360px;
+    background-color: silver;
+    border: 5px solid grey;
+    border-radius: 15px;
+}
+#src {
+    margin:20px auto;
+    width: 600px;
+    height: 320px;
+    margin-top:20px;
+    background-color: white;
+    background-size:cover;
+    border: 2px solid black;
+    border-radius:10px;
+}
+button {
+    position: absolute;
+    top: 150px;
+    width: 25px;
+    height: 70px;
+    font: 12pt arial,tahoma,sans-serif;
+    text-align: center;
+}
+.left {
+    left:5px;
+}
+.right {
+    right:5px;
+}
+</style>
+
+<body>
+    <div id="main">
+        <button onclick="slider.left()" class="left"><</button>
+        <div id="src"></div>
+        <button onclick="slider.right()" class="right">></button>
+    </div>
+</body>
+    <script>
+    var slider = {
+        slides: ['pic3.jpg', 'pic2.jpeg', 'pic3.jpeg', 'pic5.jpeg'],
+        frame: 0,
+        set: function(image){
+            document.getElementById("src").style.backgroundImage = "url("+ image +")"
+        },
+        init: function(){
+            this.set(this.slides[this.frame]);
+        },
+        left: function(){
+            this.frame--;
+            if(this.frame < 0){
+                this.frame = this.slides.length-1
+            }
+            this.set(this.slides[this.frame])
+        },
+        right: function(){
+            this.frame++;
+            if(this.frame == this.slides.length){
+                this.frame = 0
+            }
+            this.set(this.slides[this.frame])
+        },
+    }
+    window.onload = function(){
+        slider.init();
+    }
+
+    </script>
+</html>
